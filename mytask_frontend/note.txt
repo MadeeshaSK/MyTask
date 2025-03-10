@@ -22,7 +22,7 @@
 # Run flutter doctor in terminal to check the installation of flutter
 # Run flutter doctor --android-licenses in terminal to accept the licenses
 # Download Flutter and Dart SDK, Bloc in Android Studio
-# Install Git and set path in Environment Variables and connect with GitHub repository
+# Install Git and set path in Environment Variables.
 
 # Run flutter create mytask_frontend (no capital letters and spaces) in cmd to create a new flutter project in the MyTask folder
 # Run code . in cmd to open the project in Visual Studio Code
@@ -34,21 +34,36 @@
 # Run flutter run -d web-server in terminal to run the flutter project in web browser
 # Run flutter run -d chrome in terminal to run the flutter project in chrome browser
 # Click Start Debuging in top right
-
 # Hot restart -> app will restart (round arrow icon in top middle)
 # Hot reload -> just update after save (ctrl + s)
 
+# Connect with GitHub repository
+    open new terminal in vs code (cmd)
+    git init -> initialize
+    git add . (git add test1.txt[for one specific], [. for all]) -> stage the files
+    git commit -m "set folders structures and initialize project" -> commit
+    git branch -M main -> create branch as main
+    git remote add origin https://github.com/MadeeshaSK/MyTask -> connect local project to git hub
+    git push -u origin main -> push project 
+    if request user name and password give github username and make access token as password in developer settings in github
+# .gitignore file -> it include files which not to add github (.idea, env varibles, tokens(sensitive data))
+
+# UI 
+# splash screen -> when launching app it will apper and auto redirect 
+# signup screen /login screen 
+# home screen
+# others
+# widgets (everthing in flutter is a widgets) 
+        structural widgets -> container, row, column, stack
+        styling widgets -> padding, align, center
+        layout widgets -> expanded. sizedbox, flexible
+        functional widgets -> button, textfield, image
+    collection of widget is a widget tree (UI)
+# state -> something in widget that want to change(setstate)[change of a widget is a state]
+# stateless widgets -> doesnt hold any state;UI remains static
+# stateful widgets -> holds a mutable state; UI can change dynamically on user interaction
 
 
-
-# Pixel 6 and Pixel 6 (Cold Boot) in VS Code's Flutter device selection. Here's what they mean:
-
-                Pixel 6 → This is a running emulator or a connected physical device.
-                Pixel 6 (Cold Boot) → This forces the emulator to restart from scratch, clearing its previous state (like rebooting a real phone).
-                When to Use Cold Boot?
-                ✅ If the emulator is stuck or slow
-                ✅ If you're facing app crashes due to emulator state issues
-                ✅ If you need a fresh start for testing
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native
 

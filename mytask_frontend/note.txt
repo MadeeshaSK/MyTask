@@ -1,0 +1,115 @@
+/*
+
+# flutter is an open-source framwork developed by Google
+# flutter is used to develop mobile applications
+# flutter uses dart programming language
+# flutter is a cross-platform framwork that means we can use the same code to develop android and ios applications
+# flutter is a reactive framwork that means it is used to develop reactive applications
+(reactive means the application will respond to the user's input)
+# Dart is a programming language developed by Google for flutter
+# Dart is a object-oriented programming language
+# Dart is a client-optimized language for fast apps on any platform
+# Supports Asynchronous programming
+# Why we choose flutter? -> Single codebase, Hot reload, Rish Widget Library, Performance, Access to Native Features(feature for specific platform)
+
+# Download flutter from https://flutter.dev/docs/get-started/install (flutter SDK(software development kit))
+# Download Android Studio from https://developer.android.com/studio
+# Download Visual Studio Code from https://code.visualstudio.com/download
+# Download Dart and Flutter plugin in Visual Studio Code
+# Download Android Virtual Device in Android Studio(Emulator)[this with included in Android Studio installation process]
+# Download Android SDK in Android Studio
+# Set path of flutter SDK in Environment Variables
+# Run flutter doctor in terminal to check the installation of flutter
+# Run flutter doctor --android-licenses in terminal to accept the licenses
+# Download Flutter and Dart SDK, Bloc in Android Studio
+# Install Git and set path in Environment Variables and connect with GitHub repository
+
+# Run flutter create mytask_frontend (no capital letters and spaces) in cmd to create a new flutter project in the MyTask folder
+# Run code . in cmd to open the project in Visual Studio Code
+# there will be android, ios, lib, test, web, gradle, .gitignore, .metadata, .packages, pubspec.lock, pubspec.yaml files in the project...
+# pubspec.yaml file is the configuration file of the project.
+# make folder structure in lib folder -> constants(colors(colors.dart),font,size), features(home(bloc,ui),todo(bloc,ui)), models(toDo.dart),
+            repositories(homwrepository.dart, todorepository.dart), services(notificationservice.dart), widgets(textwidget.dart),main.dart
+# Run flutter run in emulator to run the flutter project (go to main.dart select device bottom right and select device.devide for current state, device(cool boot) for from begin as lag)
+# Run flutter run -d web-server in terminal to run the flutter project in web browser
+# Run flutter run -d chrome in terminal to run the flutter project in chrome browser
+# Click Start Debuging in top right
+
+# Hot restart -> app will restart (round arrow icon in top middle)
+# Hot reload -> just update after save (ctrl + s)
+
+
+
+
+# Pixel 6 and Pixel 6 (Cold Boot) in VS Code's Flutter device selection. Here's what they mean:
+
+                Pixel 6 → This is a running emulator or a connected physical device.
+                Pixel 6 (Cold Boot) → This forces the emulator to restart from scratch, clearing its previous state (like rebooting a real phone).
+                When to Use Cold Boot?
+                ✅ If the emulator is stuck or slow
+                ✅ If you're facing app crashes due to emulator state issues
+                ✅ If you need a fresh start for testing
+----------------------------------------------------------------------------------
+# cons and props of flutter with compare react native
+
+### **Flutter vs React Native**  
+
+#### **Flutter**  
+**Pros:**  
+- Fast UI with customizable widgets  
+- High performance (compiled to native code)  
+- Single codebase for mobile, web, and desktop  
+- Strong community and Google support  
+
+**Cons:**  
+- Larger app size  
+- Learning curve (Dart language)  
+- Limited third-party libraries compared to React Native  
+
+#### **React Native**  
+**Pros:**  
+- Uses JavaScript (popular & widely used)  
+- Large community and third-party libraries  
+- Hot reloading for faster development  
+- Cross-platform (iOS, Android, Web)  
+
+**Cons:**  
+- Performance issues (uses a bridge for communication)  
+- Native modules needed for complex tasks  
+- UI inconsistencies across platforms  
+
+### **Example Use Cases**  
+- **Flutter** → Banking apps, UI-heavy apps, Google Ads  
+- **React Native** → Social media apps, e-commerce apps, Facebook & Instagram  
+
+### **Other Technologies & Frameworks**  
+- **Native Android** (Java/Kotlin)  
+- **Native iOS** (Swift/Objective-C)  
+- **Xamarin** (C# & .NET)  
+- **SwiftUI** (for iOS apps)  
+- **Kotlin Multiplatform** (Android, iOS, Web, Desktop)
+
+When to Choose Flutter
+✅ Large & Complex Projects – If you need high performance, custom UI, and long-term scalability, Flutter is better.
+✅ Cross-Platform Beyond Mobile – If you're building for mobile, web, and desktop, Flutter provides a unified codebase.
+✅ Smooth Animations & UI Customization – Ideal for finance, design-heavy, and enterprise apps.
+
+Examples:
+
+Banking & finance apps (e.g., Google Pay)
+Enterprise & SaaS applications
+High-performance & animation-heavy apps
+When to Choose React Native
+✅ Fast Development & Smaller Apps – If you want quick prototyping, MVPs, or simple apps, React Native works well.
+✅ Web & Mobile Integration – If you have a React web app, React Native makes reuse easier.
+✅ Third-Party Library Support – Easier access to JavaScript libraries & plugins.
+
+Examples:
+
+E-commerce & marketplace apps
+Social media apps (e.g., Instagram, Facebook)
+Small to medium-sized apps
+Conclusion
+Flutter is better for long-term, high-performance, and large-scale applications.
+React Native is better for quick development, small to medium apps, and JavaScript-based teams.
+*/

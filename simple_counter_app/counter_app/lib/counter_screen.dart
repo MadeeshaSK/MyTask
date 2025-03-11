@@ -17,7 +17,7 @@ class _CounterScreenState extends State<CounterScreen> {
       //AppBar is the top bar (This app doesn't have one)
       //Body is the main content
       body: Padding(
-        padding: const EdgeInsets.all(35),
+        padding: const EdgeInsets.all(35), // add padding to screen
         child: Column(
           children: [
             Spacer(),

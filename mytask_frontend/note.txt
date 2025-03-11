@@ -63,6 +63,27 @@
 # stateless widgets -> doesnt hold any state;UI remains static
 # stateful widgets -> holds a mutable state; UI can change dynamically on user interaction
 
+# Animations
+# Resposnsive design
+# Form design and validation
+# import and defined in pubspec.yaml new resources
+# google fonts flutter plugin is slow, so direct download and apply fonts
+# make fonts folder and assets folder
+# protect from safe area (the area in top bottom and two sides can have device options and UI)
+# Remove Debug Banner top right on screen
+ [add to main.dart in materialApp -> debugShowCheckedModeBanner:false,]
+# we use expanded widget as when type in textfield it will not overlap with image(should resize)
+# we wrapped column with a container as we have to style the column
+# set texteditingcontroller to get input
+# use const Text when static, the it will fast
+# floatingLabelBehavior: FloatingLabelBehavior.never, -> when lick input field , the plaeholder(labal) will hide.
+# go web search flutter lottie animation and then (lottie: ^3.3.1) - past thison pubspec.yaml file.(exit code 0 on cmd when installation done)
+# download lottie json type file of a animation
+# Spacer() -> begin and end of widgit then balance free space and center widget
+# SizedBox -> set white space area.
+
+
+
 
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native

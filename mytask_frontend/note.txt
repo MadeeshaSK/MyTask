@@ -123,6 +123,39 @@
     when we create a new brach, it will be a copy of the current branch(not main branch always)
     a developer can create feat/auth branch from main branch and work on it and after make a pull request to main branch for merging
     in industry level we dont use direct main branch, we use develop branch and create feature branches from develop branch and after testing we merge feature branch to develop branch and after testing we merge develop branch to main branch
+    if there is a bug in main branch, we create new branch and fix test it there and then merge it to main branch
+
+# create and connect firebase database with flutter
+# we use firebase to authentication and firebase database for this project
+# first use as test mode database and set rule 
+    allow read, write: if true
+# install node js for flutter fire CLI method
+    [npm install -g firebase-tools]
+    [firebase --version]
+    [firebase login] -> (for login firebase CLI) 
+    [dart pub global activate flutterfire_cli]
+    (set env.varibles) - if say 
+    [flutterfire configure]
+        it will display our firebase dbs, select one(go with arrow keys)
+        then ask platforms (remove with space btn that dont need items)
+    then we can see firebase_options.dart file, it has some errors,
+    to solve these install firebase core plugin.
+        search in web firebase core flutter, then copy code like(firebase_core 3.10.0)
+        then past it pubspec.yaml file pluggin section.
+    # / change main.dart as below
+
+        Future<void> main() async {
+        WidgetsFlutterBinding.ensureInitialized();
+        await Firebase.initializeApp(options:defaultFirebaseOptions.currentPlatform);
+        runApp(const MyApp());
+        }
+    then push github
+        navigate to main directory ->
+            cd--
+            git add .
+            git commit -m "config(firebase):firebase connected"
+            git push -u origin main
+
 
 
 

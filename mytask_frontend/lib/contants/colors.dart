@@ -21,4 +21,7 @@ class AppColors {
 
   //Progress BG Color
   static const Color ProgressBGColor = Color.fromARGB(255, 0, 71, 151);
+
+  //Date Color
+  static const Color DateColor = Color.fromARGB(255, 71, 71, 71);
 }

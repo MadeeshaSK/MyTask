@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mytask_frontend/features/home/ui/home_screen.dart';
+import 'package:mytask_frontend/features/todo/ui/notification_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: HomeScreen(),
+      home: NotificationScreen(),
     );
   }
 }

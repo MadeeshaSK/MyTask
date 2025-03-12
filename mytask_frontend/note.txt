@@ -83,6 +83,7 @@
 # SizedBox -> set white space area.
 # custom widgets and reusability
 # adding dialogs, snackbars
+# git branching, conventional commits
 
 
 

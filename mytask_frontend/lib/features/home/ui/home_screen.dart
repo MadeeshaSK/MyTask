@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mytask_frontend/contants/colors.dart';
+import 'package:mytask_frontend/widgets/custom_todo_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -156,44 +157,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           (AppBar().preferredSize.height + 240 + 25),
                       child: Column(
                         children: [
-                          Container(
-                            width: screenWidth,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                color: AppColors.accentColor.withOpacity(0.5),
-                                width: 1,
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Radio(
-                                  value: 0,
-                                  groupValue: 0,
-                                  onChanged: (value) {},
-                                ),
-                                Text(
-                                  'Task1',
-                                  style: TextStyle(
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    fontFamily: 'Poppins',
-                                  ),
-                                ),
-                                Spacer(),
-                                Column(
-                                  children: [
-                                    Spacer(),
-                                    Icon(Icons.edit),
-                                    SizedBox(height: 5),
-                                    Icon(Icons.delete, color: Colors.red),
-                                    Spacer(),
-                                  ],
-                                ),
-                                SizedBox(width: 10),
-                              ],
-                            ),
+                          CustomTodoCard(
+                            cardTitle: 'Work Out',
+                            isCompleted: false,
+                          ),
+                          CustomTodoCard(
+                            cardTitle: 'Meeting',
+                            isCompleted: true,
+                          ),
+                          CustomTodoCard(
+                            cardTitle: 'Shopping',
+                            isCompleted: false,
                           ),
                         ],
                       ),

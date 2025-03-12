@@ -81,6 +81,9 @@
 # download lottie json type file of a animation
 # Spacer() -> begin and end of widgit then balance free space and center widget
 # SizedBox -> set white space area.
+# custom widgets and reusability
+# adding dialogs, snackbars
+
 
 
 

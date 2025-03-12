@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mytask_frontend/contants/colors.dart';
+import 'package:mytask_frontend/widgets/custom_button.dart';
+import 'package:mytask_frontend/widgets/custom_textfield.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -54,97 +56,25 @@ class _SignupScreenState extends State<SignupScreen> {
                       ),
                     ),
                     SizedBox(height: 25),
-                    TextField(
+                    CustomTextfield(
                       controller: _nameController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        label: Text(
-                          'Name',
-                          style: TextStyle(
-                            color: AppColors.labalTextColor,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                      ),
+                      labelText: 'Name',
+                      borderColor: Colors.white,
                     ),
                     SizedBox(height: 15),
-                    TextField(
+                    CustomTextfield(
                       controller: _emailController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        label: Text(
-                          'Email',
-                          style: TextStyle(
-                            color: AppColors.labalTextColor,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                      ),
+                      labelText: 'Email',
+                      borderColor: Colors.white,
                     ),
                     SizedBox(height: 15),
-                    TextField(
+                    CustomTextfield(
                       controller: _passwordController,
-                      decoration: InputDecoration(
-                        filled: true,
-                        fillColor: Colors.white,
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                          borderSide: BorderSide(color: Colors.white),
-                        ),
-                        label: Text(
-                          'Password',
-                          style: TextStyle(
-                            color: AppColors.labalTextColor,
-                            fontFamily: 'Poppins',
-                          ),
-                        ),
-                        floatingLabelBehavior: FloatingLabelBehavior.never,
-                      ),
+                      labelText: 'Password',
+                      borderColor: Colors.white,
                     ),
                     SizedBox(height: 25),
-                    Container(
-                      width: screenWidth,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        color: AppColors.accentColor,
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Center(
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Poppins',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                    ),
+                    CustomButton(btnWidth: screenWidth, btnText: 'Sign Up'),
                     SizedBox(height: 25),
                     Row(
                       children: [

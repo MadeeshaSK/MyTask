@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:mytask_frontend/contants/colors.dart';
+import 'package:mytask_frontend/widgets/custom_button.dart';
+import 'package:mytask_frontend/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -86,81 +88,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ],
                       ),
                       SizedBox(height: 25),
-                      TextField(
+                      CustomTextfield(
                         controller: _emailController,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: AppColors.TextFieldBorderColor,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: AppColors.TextFieldBorderColor,
-                            ),
-                          ),
-                          label: Text(
-                            'Email',
-                            style: TextStyle(
-                              color: AppColors.labalTextColor,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                        ),
+                        labelText: 'Email',
+                        borderColor: AppColors.TextFieldBorderColor,
                       ),
                       SizedBox(height: 15),
-                      TextField(
+                      CustomTextfield(
                         controller: _passwordController,
-                        decoration: InputDecoration(
-                          filled: true,
-                          fillColor: Colors.white,
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: AppColors.TextFieldBorderColor,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10),
-                            borderSide: BorderSide(
-                              color: AppColors.TextFieldBorderColor,
-                            ),
-                          ),
-                          label: Text(
-                            'Password',
-                            style: TextStyle(
-                              color: AppColors.labalTextColor,
-                              fontFamily: 'Poppins',
-                            ),
-                          ),
-                          floatingLabelBehavior: FloatingLabelBehavior.never,
-                        ),
+                        labelText: 'Password',
+                        borderColor: AppColors.TextFieldBorderColor,
                       ),
                       SizedBox(height: 25),
-                      Container(
-                        width: screenWidth,
-                        height: 50,
-                        decoration: BoxDecoration(
-                          color: AppColors.accentColor,
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Center(
-                          child: Text(
-                            'Login',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontFamily: 'Poppins',
-                              fontWeight: FontWeight.w500,
-                              fontSize: 15,
-                            ),
-                          ),
-                        ),
-                      ),
+                      CustomButton(btnWidth: screenWidth, btnText: 'Login'),
                       SizedBox(height: 25),
                       Row(
                         children: [

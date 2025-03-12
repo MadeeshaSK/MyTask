@@ -84,6 +84,46 @@
 # custom widgets and reusability
 # adding dialogs, snackbars
 # git branching, conventional commits
+    // conventional commits
+        /*
+        <type>[optional scope]: <description>
+        [optional body]
+        [optional footer]
+
+        type: feat, fix, docs, style, refactor, test, chore
+        feat: new feature
+        fix: bug fix
+        docs: documentation
+        style: formatting
+        refactor: code change that neither fixes a bug or adds a feature
+        test: adding tests
+        chore: updating build tasks, package manager
+        scope: module name
+        description: short description of the change
+        body: additional information
+        footer: breaking changes, issues closed
+
+        Example:
+        feat[add]: add new feature
+        fix[bug]: fix bug
+        docs[readme]: update readme
+        style[format]: format code
+        refactor[function]: refactor function
+        test[add]: add test
+
+        real full exmaple:
+        feat[add] : login feature
+        [the admin can login to the system]
+
+        */
+# git branching
+
+    //git branching
+
+    when we create a new brach, it will be a copy of the current branch(not main branch always)
+    a developer can create feat/auth branch from main branch and work on it and after make a pull request to main branch for merging
+    in industry level we dont use direct main branch, we use develop branch and create feature branches from develop branch and after testing we merge feature branch to develop branch and after testing we merge develop branch to main branch
+
 
 
 

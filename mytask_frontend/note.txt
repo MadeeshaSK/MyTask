@@ -156,10 +156,57 @@
             git commit -m "config(firebase):firebase connected"
             git push -u origin main
 
+# state management techniques 
+    default - set states -> small project
+    industry level - flutter BLoC pattern(Business Logic Component) -> good performance. scalability, structured
+                -getx
+                -provider
+                -riverpod
+# BLoC -> event -> UI to BLoC (trigger something)
+          state -> BLoC to UI (change state)
+          bloc  -> between UI layer and Database
 
 
+# firebase authentication
+    create a new branch feat/auth
+    [cd ..]
+    [git branch]
+    [git branch feat/auth]
+    [git checkout feat/auth]
+    [git push -u origin feat/auth]
+
+    [git fetch] -> fetch data github to local(but not merge, we can review and merge if need)
+    [git merge origin/feat/auth] -> merge
+    [git pull origin fetch/auth] -> auto fetch and merge
+
+# To use init states(first run in UI) convert splashscreen as stateful widget 
+# set initState and dispose functions(first thing and last thing what screen should do)
+# ctrl + F for searching keyword in code.
+# set Timer to splash screen
+# set navigator to login
+# wrap signup text from GestureDetector ( to detect click, double tap, long press ... )
+# auth_services.dart + firebase_auth dependency (to use authentication with firebase)
+# create user model class
+# firebase firestore package as dependency
+# on developer mode on windows(optional)
+# add flutter bloc dependency
+# go authenticaation on feature and right click then click new bloc and enter auth,
+    then it will create auth_bloc.dart, auth_event.dart, auth_state.dart
+# first create event,then event and bloc
+#   bloc consumer -> do both listner and builder
+    bloc builder -> 
+    bloc listner -> 
+# more complex parts ...
+# exceptions
+# gradle update android -> app -> build.gradle -> set  minSdk = 23, targetSdk = 34, multiDexEnabled =true, compileSdk = 34
 
 
+# before merge every time see other branch is has not needed files
+# if unfortunatly merge with .vscode file 
+    [git rm -r --cached .vscode] then commit
+    same as with main branch then commit and push and merge
+    merge with cmd
+    [git checkout main]
 
 
 ----------------------------------------------------------------------------------

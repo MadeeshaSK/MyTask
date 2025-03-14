@@ -1,7 +1,37 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:mytask_frontend/features/authentication/ui/login_screen.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
+
+  @override
+  State<SplashScreen> createState() => _SplashScreenState();
+}
+
+class _SplashScreenState extends State<SplashScreen> {
+  // Timer for splash screen
+  late Timer timer;
+  // initialize(first thing what should happen) to UI and navigate to login screen
+  @override
+  void initState() {
+    super.initState();
+    timer = Timer.periodic(Duration(seconds: 3), (Timer timer) {
+      // if use pushReplacement, user can't go back to splash screen
+      // if use push, user can go back to splash screen
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => LoginScreen()),
+      );
+    });
+  }
+
+  //Last thing what should happen in this screeen
+  @override
+  void dispose() {
+    super.dispose();
+    timer.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -10,7 +40,7 @@ class SplashScreen extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           width: screenWidth,
           height: screenHeight,
           child: Center(child: Image.asset('assets/logo/MyTask.png')),

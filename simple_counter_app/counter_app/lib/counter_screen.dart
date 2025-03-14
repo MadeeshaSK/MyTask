@@ -101,6 +101,7 @@ class _CounterScreenState extends State<CounterScreen> {
                     ),
                     backgroundColor: Colors.black,
                     onPressed: () {
+                      // state management basic method
                       setState(() {
                         answer++;
                       });

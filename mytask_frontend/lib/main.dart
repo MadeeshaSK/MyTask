@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mytask_frontend/features/todo/ui/add_todo.dart';
+import 'package:mytask_frontend/splash_screen.dart';
 import 'package:mytask_frontend/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: AddToDoScreen(),
+      home: SplashScreen(),
     );
   }
 }

@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: SafeArea(
-        child: Container(
+        child: SizedBox(
           height: screenHeight - AppBar().preferredSize.height,
           width: screenWidth,
           child: Column(

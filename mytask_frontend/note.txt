@@ -200,6 +200,22 @@
 # exceptions
 # gradle update android -> app -> build.gradle -> set  minSdk = 23, targetSdk = 34, multiDexEnabled =true, compileSdk = 34
 
+
+# before merge every time see other branch is has not needed files
+# if unfortunatly merge with .vscode file 
+    [git rm -r --cached .vscode] then commit
+    same as with main branch then commit and push and merge
+    merge with cmd
+    [git checkout main]
+    [git pull origin main]
+    [git merge feat/auth]
+    if conlicts have,
+    [git add .]
+    [git commit -m "Resolved merge conflicts"]
+    git push origin main
+
+
+
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native
 

@@ -208,13 +208,10 @@
     merge with cmd
     [git checkout main]
     [git pull origin main]
-    [git merge feat/auth]
-    if conlicts have,
-    [git add .]
-    [git commit -m "Resolved merge conflicts"]
-    git push origin main
+    
 
 
+    
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native
 

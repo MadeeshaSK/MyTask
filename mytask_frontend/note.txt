@@ -207,6 +207,8 @@
     same as with main branch then commit and push and merge
     merge with cmd
     [git checkout main]
+<<<<<<< HEAD
+=======
     [git pull origin main]
     [git merge feat/auth]
     if conlicts have,
@@ -214,6 +216,7 @@
     [git commit -m "Resolved merge conflicts"]
     git push origin main
 
+>>>>>>> feat/auth
 
 
 ----------------------------------------------------------------------------------

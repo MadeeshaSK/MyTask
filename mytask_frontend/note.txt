@@ -208,8 +208,7 @@
     merge with cmd
     [git checkout main]
     [git pull origin main]
-    [git merge feat/auth] 
-    [git push origin main]
+    
 
 
     

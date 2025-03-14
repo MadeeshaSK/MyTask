@@ -207,18 +207,12 @@
     same as with main branch then commit and push and merge
     merge with cmd
     [git checkout main]
-<<<<<<< HEAD
-=======
     [git pull origin main]
-    [git merge feat/auth]
-    if conlicts have,
-    [git add .]
-    [git commit -m "Resolved merge conflicts"]
-    git push origin main
-
->>>>>>> feat/auth
+    [git merge feat/auth] 
+    [git push origin main]
 
 
+    
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native
 

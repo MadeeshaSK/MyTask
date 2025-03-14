@@ -35,8 +35,8 @@ class _CustomTodoCardState extends State<CustomTodoCard> {
             value: widget.isCompleted ? 0 : 1,
             groupValue: 0,
             onChanged: (value) {},
-            fillColor: MaterialStateProperty.resolveWith<Color>((
-              Set<MaterialState> states,
+            fillColor: WidgetStateProperty.resolveWith<Color>((
+              Set<WidgetState> states,
             ) {
               return AppColors.accentColor;
             }),

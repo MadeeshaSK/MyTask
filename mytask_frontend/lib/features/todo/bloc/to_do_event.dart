@@ -11,3 +11,15 @@ class ToDoAddEvent extends ToDoEvent {
 
 // Event to show all ToDos
 class ToDoShowAllEvent extends ToDoEvent {}
+
+// Event to Edit a ToDo
+class ToDoEditEvent extends ToDoEvent {
+  final TodoModel toDoModel;
+  ToDoEditEvent({required this.toDoModel});
+}
+
+// Event to Delete a ToDo
+class ToDoDeleteEvent extends ToDoEvent {
+  final String toDoId;
+  ToDoDeleteEvent({required this.toDoId});
+}

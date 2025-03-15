@@ -21,10 +21,36 @@ class ToDoShowingState extends ToDoState {}
 class ToDoShowedSuccessState extends ToDoState {
   final List<TodoModel> toDoList;
   final UserModel userModel;
-  ToDoShowedSuccessState({required this.toDoList, required this.userModel});
+  final List<TodoModel> completedToDoList;
+
+  ToDoShowedSuccessState({
+    required this.toDoList,
+    required this.userModel,
+    required this.completedToDoList,
+  });
 }
 
 class ToDoShowedFailedState extends ToDoState {
   final String errorMessage;
   ToDoShowedFailedState({required this.errorMessage});
+}
+
+// Edit a ToDo
+class ToDoEditingState extends ToDoState {}
+
+class ToDoEditedSuccessState extends ToDoState {}
+
+class ToDoEditedFailedState extends ToDoState {
+  final String errorMessage;
+  ToDoEditedFailedState({required this.errorMessage});
+}
+
+// Delete a ToDo
+class ToDoDeletingState extends ToDoState {}
+
+class ToDoDeletedSuccessState extends ToDoState {}
+
+class ToDoDeletedFailedState extends ToDoState {
+  final String errorMessage;
+  ToDoDeletedFailedState({required this.errorMessage});
 }

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:mytask_frontend/contants/colors.dart';
+import 'package:mytask_frontend/models/toDo_model.dart';
 
 class ViewToDoScreen extends StatelessWidget {
-  const ViewToDoScreen({super.key});
+  final TodoModel toDoModel;
+  const ViewToDoScreen({super.key, required this.toDoModel});
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +30,23 @@ class ViewToDoScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             SizedBox(width: 10),
-            Container(
-              height: 45,
-              width: 45,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: Center(
-                child: Icon(
-                  Icons.arrow_back,
-                  size: 20,
-                  color: AppColors.accentColor,
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Container(
+                height: 45,
+                width: 45,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Center(
+                  child: Icon(
+                    Icons.arrow_back,
+                    size: 20,
+                    color: AppColors.accentColor,
+                  ),
                 ),
               ),
             ),
@@ -72,7 +79,7 @@ class ViewToDoScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                'Solve Calculus Worksheet',
+                toDoModel.toDoTitle,
                 style: TextStyle(
                   color: AppColors.fontColorBlack,
                   fontFamily: 'Poppins',
@@ -92,7 +99,7 @@ class ViewToDoScreen extends StatelessWidget {
               ),
               SizedBox(height: 5),
               Text(
-                'Complete all differentiation and integration problems in the given calculus worksheet. Verify answers using reference materials and submit by the deadline.',
+                toDoModel.toDoDescription,
                 style: TextStyle(
                   color: AppColors.fontColorBlack,
                   fontFamily: 'Poppins',

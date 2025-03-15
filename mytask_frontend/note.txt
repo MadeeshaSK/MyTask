@@ -214,6 +214,7 @@
  [git pull] - get everything / every branch
 
 # flutter uuid dependency for create custom id
+# flutter intl dependency for date
     
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native

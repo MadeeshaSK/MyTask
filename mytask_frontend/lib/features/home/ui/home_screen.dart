@@ -2,9 +2,12 @@ import 'dart:ffi';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:mytask_frontend/contants/colors.dart';
 import 'package:mytask_frontend/features/todo/bloc/to_do_bloc.dart';
 import 'package:mytask_frontend/features/todo/ui/add_todo.dart';
+import 'package:mytask_frontend/features/todo/ui/edit_todo.dart';
+import 'package:mytask_frontend/features/todo/ui/view_todo.dart';
 import 'package:mytask_frontend/models/toDo_model.dart';
 import 'package:mytask_frontend/models/user_model.dart';
 import 'package:mytask_frontend/widgets/custom_todo_card.dart';
@@ -22,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isLoading = true;
 
   List<TodoModel> toDoList = [];
+  List<TodoModel> allCompletedToDos = [];
   UserModel? userModel;
 
   @override
@@ -35,12 +39,44 @@ class _HomeScreenState extends State<HomeScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
 
+    // Delete conformation dialog
+    void deleteConfirmationDialog(String toDoId, ToDoBloc toDoBloc) {
+      showDialog(
+        context: context,
+        builder: (context) {
+          return SizedBox(
+            width: 100,
+            height: 100,
+            child: AlertDialog(
+              title: const Text('Delete Confirmation'),
+              content: const Text('Are you sure to delete this task?'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    toDoBloc.add(ToDoDeleteEvent(toDoId: toDoId));
+                    Navigator.pop(context);
+                  },
+                  child: const Text('Yes'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text('No'),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Row(
           children: [
             Text(
-              'Tuesday, Mar 11 2025',
+              DateFormat('EEEE, MMM d, yyyy').format(DateTime.now()),
               style: TextStyle(
                 fontSize: 20,
                 fontFamily: 'Poppins',
@@ -65,10 +101,26 @@ class _HomeScreenState extends State<HomeScreen> {
             } else if (state is ToDoShowedSuccessState) {
               isLoading = false;
               toDoList = state.toDoList;
+              allCompletedToDos = state.completedToDoList;
               userModel = state.userModel;
               setState(() {});
             } else if (state is ToDoShowedFailedState) {
               isLoading = false;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(state.errorMessage),
+                  backgroundColor: Colors.red,
+                ),
+              );
+            } else if (state is ToDoDeletedSuccessState) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Task Deleted Successfully'),
+                  backgroundColor: AppColors.accentColor,
+                ),
+              );
+              _toDoBloc.add(ToDoShowAllEvent());
+            } else if (state is ToDoDeletedFailedState) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.errorMessage),
@@ -116,7 +168,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   Spacer(),
-                                  SizedBox(height: 20),
+                                  SizedBox(height: 15),
                                   const Text(
                                     'Today Progress',
                                     style: TextStyle(
@@ -128,9 +180,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   SizedBox(height: 5),
                                   Container(
                                     width: screenWidth,
-                                    height: 70,
+                                    height: 65,
                                     padding: EdgeInsets.symmetric(
                                       horizontal: 15,
+                                      vertical: 10,
                                     ),
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),
@@ -144,8 +197,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
-                                        Spacer(),
                                         const Text(
                                           'Progress',
                                           style: TextStyle(
@@ -157,7 +211,12 @@ class _HomeScreenState extends State<HomeScreen> {
                                         ),
                                         SizedBox(height: 5),
                                         LinearProgressIndicator(
-                                          value: 0.8,
+                                          value:
+                                              toDoList.isEmpty
+                                                  ? 0
+                                                  : (allCompletedToDos.length /
+                                                          toDoList.length)
+                                                      .toDouble(),
                                           color: Colors.white,
                                           backgroundColor:
                                               AppColors.ProgressBGColor,
@@ -166,7 +225,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                         Align(
                                           alignment: Alignment.centerRight,
                                           child: Text(
-                                            '80%',
+                                            toDoList.isEmpty
+                                                ? '0%'
+                                                : '${((allCompletedToDos.length / toDoList.length) * 100).toStringAsFixed(0)}%',
                                             style: TextStyle(
                                               fontSize: 10,
                                               fontWeight: FontWeight.w400,
@@ -175,68 +236,100 @@ class _HomeScreenState extends State<HomeScreen> {
                                             ),
                                           ),
                                         ),
-                                        SizedBox(height: 10),
                                       ],
                                     ),
                                   ),
-                                  SizedBox(height: 10),
                                 ],
                               ),
                             ),
                           ),
-                          Container(
-                            width: screenWidth,
-                            height:
-                                screenHeight -
-                                (AppBar().preferredSize.height + 240),
-                            padding: EdgeInsets.symmetric(horizontal: 15),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                SizedBox(
-                                  height: 25,
-                                  child: const Text(
-                                    'Daily Tasks',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Poppins',
+                          SizedBox(height: 5),
+                          SingleChildScrollView(
+                            child: Container(
+                              width: screenWidth,
+                              height:
+                                  screenHeight -
+                                  (AppBar().preferredSize.height + 240),
+                              padding: EdgeInsets.symmetric(horizontal: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  SizedBox(
+                                    height: 25,
+                                    child: const Text(
+                                      'Daily Tasks',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w600,
+                                        fontFamily: 'Poppins',
+                                      ),
                                     ),
                                   ),
-                                ),
-                                SizedBox(height: 10),
-                                SizedBox(
-                                  width: screenWidth,
-                                  height:
-                                      screenHeight -
-                                      (AppBar().preferredSize.height +
-                                          250 +
-                                          25),
-                                  child:
-                                      toDoList.isEmpty
-                                          ? Center(
-                                            child: Text(
-                                              'No tasks available',
-                                              style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w400,
-                                                fontFamily: 'Poppins',
+                                  SizedBox(height: 5),
+                                  SizedBox(
+                                    width: screenWidth,
+                                    height:
+                                        screenHeight -
+                                        (AppBar().preferredSize.height +
+                                            250 +
+                                            25),
+                                    child:
+                                        toDoList.isEmpty
+                                            ? Center(
+                                              child: Text(
+                                                'No tasks available',
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontFamily: 'Poppins',
+                                                ),
                                               ),
+                                            )
+                                            : ListView.builder(
+                                              itemCount: toDoList.length,
+                                              itemBuilder: (context, index) {
+                                                return CustomTodoCard(
+                                                  viewToDoBtn: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder:
+                                                            (
+                                                              context,
+                                                            ) => ViewToDoScreen(
+                                                              toDoModel:
+                                                                  toDoList[index],
+                                                            ),
+                                                      ),
+                                                    );
+                                                  },
+                                                  deleteToDoBtn: () {
+                                                    deleteConfirmationDialog(
+                                                      toDoList[index].toDoID,
+                                                      _toDoBloc,
+                                                    );
+                                                  },
+                                                  editToDoBtn: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                        builder:
+                                                            (
+                                                              context,
+                                                            ) => EditToDoScreen(
+                                                              toDoModel:
+                                                                  toDoList[index],
+                                                            ),
+                                                      ),
+                                                    );
+                                                  },
+                                                  todo: toDoList[index],
+                                                );
+                                              },
                                             ),
-                                          )
-                                          : ListView.builder(
-                                            itemCount: toDoList.length,
-                                            itemBuilder: (context, index) {
-                                              return CustomTodoCard(
-                                                cardTitle:
-                                                    toDoList[index].toDoTitle,
-                                                isCompleted:
-                                                    toDoList[index].isCompleted,
-                                              );
-                                            },
-                                          ),
-                                ),
-                              ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

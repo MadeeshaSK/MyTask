@@ -30,7 +30,17 @@ class AuthServices {
   }
 
   // Sign In User Method
-  Future<void> signInUser(String email, String password) async {
-    await _auth.signInWithEmailAndPassword(email: email, password: password);
+  Future<void> signInUser(String email, String password, String token) async {
+    UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+    if (userCredential.user != null) {
+      await _firestore.collection('Users').doc(userCredential.user!.uid).update(
+        {'fcmToken': token},
+      );
+    } else {
+      print('User not found');
+    }
   }
 }

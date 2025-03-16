@@ -46,7 +46,9 @@ class _SignupScreenState extends State<SignupScreen> {
             );
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => LoginScreen()),
+              MaterialPageRoute(
+                builder: (context) => LoginScreen(fcmToken: ''),
+              ),
             );
           } else if (state is SignUpErrorState) {
             isLoading = false;
@@ -163,7 +165,9 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LoginScreen(),
+                                      builder:
+                                          (context) =>
+                                              LoginScreen(fcmToken: ''),
                                     ),
                                   );
                                 },

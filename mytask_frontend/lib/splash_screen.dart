@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:mytask_frontend/features/authentication/ui/login_screen.dart';
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({super.key});
+  // fcm token
+  final String fcmToken;
+  const SplashScreen({super.key, required this.fcmToken});
 
   @override
   State<SplashScreen> createState() => _SplashScreenState();
@@ -21,7 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
       // if use push, user can go back to splash screen
       Navigator.pushReplacement(
         context,
-        MaterialPageRoute(builder: (context) => LoginScreen()),
+        MaterialPageRoute(
+          builder: (context) => LoginScreen(fcmToken: widget.fcmToken),
+        ),
       );
     });
   }

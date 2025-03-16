@@ -14,5 +14,11 @@ class SignUpEvent extends AuthEvent {
 class SignInEvent extends AuthEvent {
   final String email;
   final String password;
-  SignInEvent({required this.email, required this.password});
+  final String fcmToken;
+
+  SignInEvent({
+    required this.email,
+    required this.password,
+    required this.fcmToken,
+  });
 }

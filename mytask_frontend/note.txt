@@ -215,6 +215,11 @@
 
 # flutter uuid dependency for create custom id
 # flutter intl dependency for date
+# firebase messeging dependency and firebase local notification dependency for notifications (gradel settings required)
+    AndroidManifest.xml add code,
+     android:showWhenLocked="true"
+     android:turnScreenOn="true"
+# permission_handler: ^11.4.0 for permission handling
     
 ----------------------------------------------------------------------------------
 # cons and props of flutter with compare react native

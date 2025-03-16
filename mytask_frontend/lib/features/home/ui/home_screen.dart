@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:mytask_frontend/contants/colors.dart';
+import 'package:mytask_frontend/features/notifications/ui/notification_screen.dart';
 import 'package:mytask_frontend/features/todo/bloc/to_do_bloc.dart';
 import 'package:mytask_frontend/features/todo/ui/add_todo.dart';
 import 'package:mytask_frontend/features/todo/ui/edit_todo.dart';
@@ -84,10 +85,18 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
             Spacer(),
-            Image.asset(
-              'assets/images/notification-icon.png',
-              width: 20,
-              height: 20,
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => NotificationScreen()),
+                );
+              },
+              child: Image.asset(
+                'assets/images/notification-icon.png',
+                width: 20,
+                height: 20,
+              ),
             ),
           ],
         ),

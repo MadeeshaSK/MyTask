@@ -44,7 +44,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   Future<void> signInEvent(SignInEvent event, Emitter<AuthState> emit) async {
     try {
       emit(SignInInprogressState());
-      await AuthServices().signInUser(event.email, event.password);
+      await AuthServices().signInUser(
+        event.email,
+        event.password,
+        event.fcmToken,
+      );
       emit(SignInSuccessState());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {

@@ -24,4 +24,7 @@ class AppColors {
 
   //Date Color
   static const Color DateColor = Color.fromARGB(255, 71, 71, 71);
+
+  //Notification Color
+  static const Color notificationColor = Color.fromARGB(255, 241, 247, 254);
 }

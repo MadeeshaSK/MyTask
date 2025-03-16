@@ -9,7 +9,8 @@ import 'package:mytask_frontend/widgets/custom_button.dart';
 import 'package:mytask_frontend/widgets/custom_textfield.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  final String fcmToken;
+  const LoginScreen({super.key, required this.fcmToken});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -168,6 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                       SignInEvent(
                                         email: _emailController.text,
                                         password: _passwordController.text,
+                                        fcmToken: widget.fcmToken,
                                       ),
                                     );
                                   },

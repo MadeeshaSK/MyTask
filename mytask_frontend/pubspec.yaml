@@ -44,7 +44,7 @@ dependencies:
   flutter_local_notifications: ^19.0.0
   firebase_messaging: ^15.2.4
   permission_handler: ^11.4.0
-  
+  shared_preferences: ^2.5.2
 
 
 dev_dependencies:
@@ -100,6 +100,9 @@ flutter:
         - asset: fonts/Poppins-SemiBold.ttf
         - asset: fonts/Poppins-Thin.ttf
           style: italic
+    - family: Barriecito
+      fonts:
+        - asset: fonts/Barriecito-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package

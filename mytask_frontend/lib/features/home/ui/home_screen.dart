@@ -151,66 +151,106 @@ class _HomeScreenState extends State<HomeScreen> {
                       )
                       : Column(
                         children: [
-                          Expanded(
-                            child: Container(
-                              width: screenWidth,
-                              height: 240,
-                              padding: EdgeInsets.symmetric(horizontal: 15),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: 5),
-                                  Text(
-                                    'Welcome ${userModel?.name ?? 'User'}',
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w700,
-                                      fontFamily: 'Poppins',
-                                    ),
+                          // First section (2/5 of the screen)
+                          Container(
+                            height:
+                                (screenHeight - AppBar().preferredSize.height) *
+                                1.5 /
+                                5,
+                            width: screenWidth,
+                            padding: EdgeInsets.symmetric(horizontal: 15),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 5),
+                                Text(
+                                  'Welcome ${userModel?.name?.split(' ').first ?? 'User'} 👋',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                    fontWeight: FontWeight.w700,
+                                    fontFamily: 'Poppins',
                                   ),
-                                  const Text(
-                                    'Have a nice day!',
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      fontFamily: 'Poppins',
-                                    ),
+                                ),
+                                const Text(
+                                  ' Have a nice day!',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w400,
+                                    fontFamily: 'Poppins',
                                   ),
-                                  Spacer(),
-                                  SizedBox(height: 15),
-                                  const Text(
-                                    'Today Progress',
-                                    style: TextStyle(
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w600,
-                                      fontFamily: 'Poppins',
-                                    ),
+                                ),
+                                Spacer(),
+                                SizedBox(
+                                  height:
+                                      (screenHeight -
+                                          AppBar().preferredSize.height) *
+                                      0.3 /
+                                      5,
+                                ),
+                                const Text(
+                                  'Today Progress',
+                                  style: TextStyle(
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w600,
+                                    fontFamily: 'Poppins',
                                   ),
-                                  SizedBox(height: 5),
-                                  Container(
-                                    width: screenWidth,
-                                    height: 65,
-                                    padding: EdgeInsets.symmetric(
-                                      horizontal: 15,
-                                      vertical: 10,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      image: DecorationImage(
-                                        image: AssetImage(
-                                          'assets/images/home-background.png',
-                                        ),
-                                        fit: BoxFit.cover,
+                                ),
+                                SizedBox(
+                                  height:
+                                      (screenHeight -
+                                          AppBar().preferredSize.height) *
+                                      0.05 /
+                                      5,
+                                ),
+                                Container(
+                                  width: screenWidth,
+                                  height: 80,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: 15,
+                                    vertical: 10,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                        'assets/images/home-background.png',
                                       ),
+                                      fit: BoxFit.cover,
                                     ),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        const Text(
-                                          'Progress',
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        'Progress',
+                                        style: TextStyle(
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w400,
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                      ),
+                                      SizedBox(height: 5),
+                                      LinearProgressIndicator(
+                                        value:
+                                            toDoList.isEmpty
+                                                ? 0
+                                                : (allCompletedToDos.length /
+                                                        toDoList.length)
+                                                    .toDouble(),
+                                        color: Colors.white,
+                                        backgroundColor:
+                                            AppColors.ProgressBGColor,
+                                      ),
+                                      SizedBox(height: 5),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          toDoList.isEmpty
+                                              ? '0%'
+                                              : '${((allCompletedToDos.length / toDoList.length) * 100).toStringAsFixed(0)}%',
                                           style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.w400,
@@ -218,47 +258,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                             color: Colors.white,
                                           ),
                                         ),
-                                        SizedBox(height: 5),
-                                        LinearProgressIndicator(
-                                          value:
-                                              toDoList.isEmpty
-                                                  ? 0
-                                                  : (allCompletedToDos.length /
-                                                          toDoList.length)
-                                                      .toDouble(),
-                                          color: Colors.white,
-                                          backgroundColor:
-                                              AppColors.ProgressBGColor,
-                                        ),
-                                        SizedBox(height: 5),
-                                        Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Text(
-                                            toDoList.isEmpty
-                                                ? '0%'
-                                                : '${((allCompletedToDos.length / toDoList.length) * 100).toStringAsFixed(0)}%',
-                                            style: TextStyle(
-                                              fontSize: 10,
-                                              fontWeight: FontWeight.w400,
-                                              fontFamily: 'Poppins',
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                      ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
-                          SizedBox(height: 5),
-                          SingleChildScrollView(
+                          SizedBox(height: 20),
+                          Expanded(
                             child: Container(
                               width: screenWidth,
-                              height:
-                                  screenHeight -
-                                  (AppBar().preferredSize.height + 240),
                               padding: EdgeInsets.symmetric(horizontal: 15),
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -275,13 +285,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
                                   SizedBox(height: 5),
-                                  SizedBox(
-                                    width: screenWidth,
-                                    height:
-                                        screenHeight -
-                                        (AppBar().preferredSize.height +
-                                            250 +
-                                            25),
+                                  Expanded(
                                     child:
                                         toDoList.isEmpty
                                             ? Center(

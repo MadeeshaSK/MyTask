@@ -70,7 +70,7 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 children: [
                   Expanded(
-                    flex: 1,
+                    flex: 2,
                     child: SizedBox(
                       width: screenWidth - 100,
                       child: Lottie.asset(
@@ -79,7 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                   ),
                   Expanded(
-                    flex: 1,
+                    flex: 3,
                     child: Container(
                       width: screenWidth,
                       padding: EdgeInsets.symmetric(
